@@ -19,17 +19,17 @@
               </thead>
               <tbody>
 
-                @foreach($users as $user)
+                {{-- @foreach($users as $user)
                 <tr>
                   <td>{{  $user->name }}</td>
                   <td>{{ $user->email }}</td>
                   {{-- diffForHumans only works for eloquent orm.'--}}
                   {{-- <td>{{ $user->created_at->diffForHumans() }}</td> --}}
                   {{--  this format works for query builder.'--}}
-                  <td>{{ Carbon\Carbon::parse($user->created_at)->diffForHumans() }}</td>
+                  {{-- <td>{{ Carbon\Carbon::parse($user->created_at)->diffForHumans() }}</td> 
 
                 </tr>
-                @endforeach
+                @endforeach --}}
                 
               </tbody>
             </table>

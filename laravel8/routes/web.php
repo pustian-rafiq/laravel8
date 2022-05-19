@@ -29,6 +29,7 @@ Route::middleware([
 // Category routes  
 
 Route::get('/category/all',[CategoryController::class,'getALlCategories'])->name('all.category');
+Route::post('/category/add',[CategoryController::class,'addCategory'])->name('store.category');
 
 // Route::middleware([
 //     'auth:sanctum',

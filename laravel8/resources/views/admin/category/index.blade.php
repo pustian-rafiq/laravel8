@@ -35,7 +35,8 @@
                       {{-- <td>{{  ++$i }}</td> --}}
                       <td>{{ $categories->firstItem() + $loop->index }}</td>
                       <td>{{  $category->category_name }}</td>
-                      <td>{{ $category->user_id }}</td>
+                      <td>{{ $category->name }}</td>
+                      {{-- <td>{{ $category->user->name }}</td> --}}
                       {{-- diffForHumans only works for eloquent orm.'--}}
                         {{-- <td>{{ $category->created_at->diffForHumans() }}</td>   --}}
                       {{--  this format works for query builder.'--}}

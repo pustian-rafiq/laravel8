@@ -22,7 +22,17 @@ class CategoryController extends Controller
        // $categories =DB::table('categories')->latest()->get();
 
        // Fetches all categories using pagination
-       $categories = Category::latest()->paginate(5);
+      // $categories = Category::latest()->paginate(5);
+
+      /**
+       * One to one relation Using query builder
+       * join er 2nd parameter hbe child tabler foreign key 
+       * and 3rd parameter hbe parent tabler primary key
+      */
+         $categories = DB::table('categories')
+                        ->join('users', 'categories.user_id','users.id')
+                        ->select('categories.*','users.name')
+                        ->latest()->paginate(5);
         return view('admin.category.index', compact('categories'));
     }
 

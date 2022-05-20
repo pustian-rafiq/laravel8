@@ -14,8 +14,20 @@ class Category extends Model
         'user_id',
         'category_name',
     ];
-// Category holo child model. tai category theke user model er relation hbe belongsTo
+
     public function user(){
-        return $this->belongsTo(User::class);
+        // Category holo child model. tai category theke user model er relation hbe belongsTo
+        // ekhane categories.user_id == user.id
+        // Eta default use case
+        // return $this->belongsTo(User::class,'user_id','id');
+
+        // Category model theke user er hasOne relation korte hoile 2nd parameter a user tabler primary key
+        // and 3rd parameter a category tabler foreign key dite hoi
+        // user.id == categories.user_id
+        // eta custome use case
+        return $this->hasOne(User::class, 'id','user_id');
+
+      
+
     }
 }

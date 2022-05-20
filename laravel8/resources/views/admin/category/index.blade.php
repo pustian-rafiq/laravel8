@@ -35,12 +35,16 @@
                       {{-- <td>{{  ++$i }}</td> --}}
                       <td>{{ $categories->firstItem() + $loop->index }}</td>
                       <td>{{  $category->category_name }}</td>
-                      <td>{{ $category->name }}</td>
-                      {{-- <td>{{ $category->user->name }}</td> --}}
+                      {{-- <td>{{ $category->name }}</td> --}}
+                      <td>{{ $category->user->name }}</td>
                       {{-- diffForHumans only works for eloquent orm.'--}}
-                        {{-- <td>{{ $category->created_at->diffForHumans() }}</td>   --}}
+                        <td>{{ $category->created_at->diffForHumans() }}</td>  
+                        <td>
+                          <a href="{{ url('category/edit/'.$category->id) }}" class="btn btn-primary">Edit</a>
+                          <a href="{{ url('category/delete/'.$category->id) }}" class="btn btn-danger">Delete</a>
+                        </td>  
                       {{--  this format works for query builder.'--}}
-                      <td>{{ Carbon\Carbon::parse($category->created_at)->diffForHumans() }}</td>
+                      {{-- <td>{{ Carbon\Carbon::parse($category->created_at)->diffForHumans() }}</td> --}}
     
                     </tr>
                     @endforeach

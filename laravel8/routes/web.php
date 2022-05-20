@@ -30,6 +30,8 @@ Route::middleware([
 
 Route::get('/category/all',[CategoryController::class,'getALlCategories'])->name('all.category');
 Route::post('/category/add',[CategoryController::class,'addCategory'])->name('store.category');
+Route::get('/category/edit/{id}',[CategoryController::class,'editCategory']);
+Route::post('/category/update/{id}',[CategoryController::class,'updateCategory']);
 
 // Route::middleware([
 //     'auth:sanctum',

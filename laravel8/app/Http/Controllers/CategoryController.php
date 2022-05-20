@@ -11,7 +11,18 @@ use Illuminate\Support\Facades\DB;
 class CategoryController extends Controller
 {
     public function getAllCategories(){
-        $categories = Category::all();
+        //using eloquent orm
+        // Fetches all categories from the database in ascending order of id
+        //$categories = Category::all();
+
+        // Fetches all categories from the database in descending order of id(last to first)
+        //$categories = Category::latest()->get();
+
+        // Using query builder
+       // $categories =DB::table('categories')->latest()->get();
+
+       // Fetches all categories using pagination
+       $categories = Category::latest()->paginate(5);
         return view('admin.category.index', compact('categories'));
     }
 

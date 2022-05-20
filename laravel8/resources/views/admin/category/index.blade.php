@@ -29,23 +29,26 @@
                     </tr>
                   </thead>
                   <tbody>
-    <?php $i=0 ?>
+                   {{-- <?php $i=0 ?> --}}
                     @foreach($categories as $category)
                     <tr>
-                      <td>{{  ++$i }}</td>
+                      {{-- <td>{{  ++$i }}</td> --}}
+                      <td>{{ $categories->firstItem() + $loop->index }}</td>
                       <td>{{  $category->category_name }}</td>
-                      <td>{{ $category->user->name }}</td>
+                      <td>{{ $category->user_id }}</td>
                       {{-- diffForHumans only works for eloquent orm.'--}}
-                        <td>{{ $category->created_at->diffForHumans() }}</td>  
+                        {{-- <td>{{ $category->created_at->diffForHumans() }}</td>   --}}
                       {{--  this format works for query builder.'--}}
-                      {{-- <td>{{ Carbon\Carbon::parse($user->created_at)->diffForHumans() }}</td> --}}
+                      <td>{{ Carbon\Carbon::parse($category->created_at)->diffForHumans() }}</td>
     
                     </tr>
                     @endforeach
                    
-                  </tbody>
-                  
+                  </tbody>                 
                 </table>
+
+                {{-- This is used for default pagination --}}
+              {{ $categories->links() }}
               </div> 
                
             </div>

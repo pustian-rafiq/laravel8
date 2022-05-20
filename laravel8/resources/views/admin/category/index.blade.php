@@ -11,31 +11,40 @@
         <div class="col-md-6">
           <div class="container mt-3">
             <div class="card">
+              @if(session('success'))
+              <div class="alert alert-success alert-dismissible">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <strong>{{ session('success') }}</strong>  
+              </div>
+              @endif
               <div class="card-header">All Category</div>
               <div class="card-body">
                 <table class="table table-bordered">
                   <thead>
                     <tr>
-                      <th>Username</th>
-                      <th>Email</th>
+                      <th>Sl No</th>
+                      <th>Category Name</th>
+                      <th>User Name</th>
                       <th>CreateAt</th>
                     </tr>
                   </thead>
                   <tbody>
-    
-                    {{-- @foreach($users as $user)
+    <?php $i=0 ?>
+                    @foreach($categories as $category)
                     <tr>
-                      <td>{{  $user->name }}</td>
-                      <td>{{ $user->email }}</td>
+                      <td>{{  ++$i }}</td>
+                      <td>{{  $category->category_name }}</td>
+                      <td>{{ $category->user->name }}</td>
                       {{-- diffForHumans only works for eloquent orm.'--}}
-                      {{-- <td>{{ $user->created_at->diffForHumans() }}</td> --}}
+                        <td>{{ $category->created_at->diffForHumans() }}</td>  
                       {{--  this format works for query builder.'--}}
-                      {{-- <td>{{ Carbon\Carbon::parse($user->created_at)->diffForHumans() }}</td> 
+                      {{-- <td>{{ Carbon\Carbon::parse($user->created_at)->diffForHumans() }}</td> --}}
     
                     </tr>
-                    @endforeach --}}
-                    
+                    @endforeach
+                   
                   </tbody>
+                  
                 </table>
               </div> 
                
@@ -51,7 +60,7 @@
                   @csrf
                   <div class="mb-3 mt-3">
                     <label for="category" class="form-label">Category Name:</label>
-                    <input type="text" class="form-control" id="category" placeholder="Enter category" name="category">
+                    <input type="text" class="form-control" id="category" placeholder="Enter category" name="category_name">
 
                     @error('category_name')
                       <span class="text-danger">{{ $message}}</span>

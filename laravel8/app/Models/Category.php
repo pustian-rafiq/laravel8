@@ -14,4 +14,8 @@ class Category extends Model
         'user_id',
         'category_name',
     ];
+// Category holo child model. tai category theke user model er relation hbe belongsTo
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

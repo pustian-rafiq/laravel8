@@ -23,6 +23,11 @@ class CategoryController extends Controller
 
        // Fetches all categories using pagination
        $categories = Category::latest()->paginate(5);
+     //Fetch category for trashed list
+     $trashCategory = Category::onlyTrashed()->latest()->paginate(3);
+
+
+
 
       /**
        * One to one relation Using query builder
@@ -36,7 +41,7 @@ class CategoryController extends Controller
 
 
 
-        return view('admin.category.index', compact('categories'));
+        return view('admin.category.index', compact('categories','trashCategory'));
     }
 
     // ADD CATEGORY 
@@ -87,12 +92,14 @@ class CategoryController extends Controller
     //Edit category
     public function editCategory($id) {
         // Fetch single category using eloquent orm
-       //$category = Category::find($id);
+       $category = Category::find($id);
 
-
+       
+  
        //fetch single category using query builder
 
-       $category = DB::table('categories')->where('id', $id)->first();
+       //$category = DB::table('categories')->where('id', $id)->first();
+
 
         return view('admin.category.edit', compact('category'));
     }
@@ -115,5 +122,14 @@ class CategoryController extends Controller
          DB::table('categories')->where('id',$id)->update($data);
 
         return Redirect()->route('all.category')->with('success','Category updated successfuly');
+    }
+
+    //SoftDeletes category
+
+    public function softDelete($id) {
+
+        $delete = Category::find($id)->delete();
+
+        return Redirect()->back()->with('success','Category soft deleted successfully');
     }
 }

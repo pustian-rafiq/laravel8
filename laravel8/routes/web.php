@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BrandController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +37,11 @@ Route::get('/softDelete/category/{id}',[CategoryController::class,'softDelete'])
 Route::get('/category/restore/{id}',[CategoryController::class,'restoreCategory']);
 Route::get('category/permanent-delete/{id}',[CategoryController::class,'permanentDeleteCategory']);
 
+
+// Brands routes  
+
+Route::get('/brand/all',[BrandController::class,'getAllBrand'])->name('all.brand');
+Route::post('/brand/add',[CategoryController::class,'addBrand'])->name('store.brand');
 // Route::middleware([
 //     'auth:sanctum',
 //     config('jetstream.auth_session'),

@@ -34,6 +34,7 @@ Route::get('/category/edit/{id}',[CategoryController::class,'editCategory']);
 Route::post('/category/update/{id}',[CategoryController::class,'updateCategory']);
 Route::get('/softDelete/category/{id}',[CategoryController::class,'softDelete']);
 Route::get('/category/restore/{id}',[CategoryController::class,'restoreCategory']);
+Route::get('category/permanent-delete/{id}',[CategoryController::class,'permanentDeleteCategory']);
 
 // Route::middleware([
 //     'auth:sanctum',

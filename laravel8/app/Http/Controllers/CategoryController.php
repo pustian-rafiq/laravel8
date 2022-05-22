@@ -139,4 +139,11 @@ class CategoryController extends Controller
 
         return Redirect()->back()->with('success','Category restored successfully');
     }
+
+    // Permanently delete the category from trashed tabler
+    public function permanentDeleteCategory($id) {
+        $delete = Category::onlyTrashed()->find($id)->forceDelete();
+
+        return Redirect()->back()->with('success','Category deleted permanently');
+    }
 }

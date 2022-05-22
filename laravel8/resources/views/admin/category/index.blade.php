@@ -111,7 +111,7 @@
                             <td>{{ $category->created_at->diffForHumans() }}</td>  
                             <td>
                               <a href="{{ url('category/restore/'.$category->id) }}" class="btn btn-danger">Restore</a>
-                              <a href="{{ url('category/delete/'.$category->id) }}" class="btn btn-danger">Delete</a>
+                              <a href="{{ url('category/permanent-delete/'.$category->id) }}" class="btn btn-danger">Delete</a>
                             </td>  
         
                         </tr>

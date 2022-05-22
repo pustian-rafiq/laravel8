@@ -12,22 +12,34 @@
         <div class="col-md-6 offset-md-2">
           <div class="container mt-3">
             <div class="card">
-              <div class="card-header">Update Category</div>
+              <div class="card-header">Update Brand</div>
               <div class="card-body">
-                <form action="{{ url('category/update/'.$category->id)}}" method="post">
+                <form action="{{ url('brand/update/'.$brand->id)}}" method="post" enctype="multipart/form-data">
                   @csrf
                   <div class="mb-3 mt-3">
-                    <label for="category" class="form-label">Category Name:</label>
-                    <input type="text" class="form-control" id="category" value="{{ $category->category_name }}" placeholder="Enter category" name="category_name">
+                    <label for="brand_name" class="form-label">Brand Name:</label>
+                    <input type="text" class="form-control" id="brand_name" value="{{ $brand->brand_name }}" name="brand_name">
 
-                    @error('category_name')
+                    @error('brand_name')
                       <span class="text-danger">{{ $message}}</span>
                     @enderror
                   </div>
-                  <button type="submit" class="btn btn-primary bg-success">Update Category</button>
+                  <div class="mb-3 mt-3">
+                    <label for="brand_image" class="form-label">Brand Image:</label>
+                    <input type="file" class="form-control" id="brand_image"  name="brand_image">
+
+                    @error('brand_image')
+                      <span class="text-danger">{{ $message}}</span>
+                    @enderror
+                  </div>
+                  <div class="form-group mb-5">
+                    <img src="{{ asset($brand->brand_image) }}" style="width:300px; height:200px" alt="">
+
+                  </div>
+
+                  <button type="submit" class="btn btn-primary bg-success">Add Brand</button>
                 </form> 
               </div> 
-              
             </div>
           </div>
         </div>

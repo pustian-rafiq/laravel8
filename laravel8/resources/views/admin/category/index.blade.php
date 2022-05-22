@@ -86,7 +86,7 @@
 
           {{-- Trash list table start here --}}
           <div class="row mt-4">
-            <div class="col-md-6">
+            <div class="col-md-8">
               <div class="container mt-3">
                 <div class="card">
                   <div class="card-header">Trash Category</div>
@@ -110,6 +110,7 @@
                           <td>{{ $category->user->name }}</td>
                             <td>{{ $category->created_at->diffForHumans() }}</td>  
                             <td>
+                              <a href="{{ url('category/restore/'.$category->id) }}" class="btn btn-danger">Restore</a>
                               <a href="{{ url('category/delete/'.$category->id) }}" class="btn btn-danger">Delete</a>
                             </td>  
         

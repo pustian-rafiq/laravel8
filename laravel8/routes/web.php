@@ -33,6 +33,7 @@ Route::post('/category/add',[CategoryController::class,'addCategory'])->name('st
 Route::get('/category/edit/{id}',[CategoryController::class,'editCategory']);
 Route::post('/category/update/{id}',[CategoryController::class,'updateCategory']);
 Route::get('/softDelete/category/{id}',[CategoryController::class,'softDelete']);
+Route::get('/category/restore/{id}',[CategoryController::class,'restoreCategory']);
 
 // Route::middleware([
 //     'auth:sanctum',

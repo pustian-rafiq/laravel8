@@ -132,4 +132,11 @@ class CategoryController extends Controller
 
         return Redirect()->back()->with('success','Category soft deleted successfully');
     }
+
+    // Restore the category from trashed tabler
+    public function restoreCategory($id) {
+        $delete = Category::withTrashed()->find($id)->restore();
+
+        return Redirect()->back()->with('success','Category restored successfully');
+    }
 }

@@ -37,9 +37,8 @@
                           <td>{{ $brands->firstItem() + $loop->index }}</td>
                           <td>{{  $brand->brand_name }}</td>
                           <td>
-                            <img src="">
+                            <img src="{{ asset($brand->brand_image)}}" style="width:50px;height:50px">
                           </td>
-                          {{-- diffForHumans only works for eloquent orm.'--}}
                             <td>{{ $brand->created_at->diffForHumans() }}</td>  
                             <td>
                               <a href="{{ url('brand/edit/'.$brand->id) }}" class="btn btn-primary">Edit</a>
@@ -69,7 +68,7 @@
                 <div class="card">
                   <div class="card-header">Add Brand</div>
                   <div class="card-body">
-                    <form action="{{ route('store.brand')}}" method="post">
+                    <form action="{{ route('store.brand')}}" method="post" enctype="multipart/form-data">
                       @csrf
                       <div class="mb-3 mt-3">
                         <label for="brand_name" class="form-label">Brand Name:</label>
@@ -80,7 +79,7 @@
                         @enderror
                       </div>
                       <div class="mb-3 mt-3">
-                        <label for="brand_image" class="form-label">Brand Name:</label>
+                        <label for="brand_image" class="form-label">Brand Image:</label>
                         <input type="file" class="form-control" id="brand_image"  name="brand_image">
 
                         @error('brand_image')

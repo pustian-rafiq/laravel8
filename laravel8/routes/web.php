@@ -41,7 +41,7 @@ Route::get('category/permanent-delete/{id}',[CategoryController::class,'permanen
 // Brands routes  
 
 Route::get('/brand/all',[BrandController::class,'getAllBrand'])->name('all.brand');
-Route::post('/brand/add',[CategoryController::class,'addBrand'])->name('store.brand');
+Route::post('/brand/add',[BrandController::class,'addBrand'])->name('store.brand');
 // Route::middleware([
 //     'auth:sanctum',
 //     config('jetstream.auth_session'),

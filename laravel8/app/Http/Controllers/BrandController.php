@@ -51,4 +51,39 @@ class BrandController extends Controller
 
         return view('admin.brand.edit',compact('brand'));
     }
+
+    //Update Brand
+    public function updateBrand(Request $request,$id){
+        $validateData = $request->validate([
+            'brand_name' => 'required|min:4',
+        ],
+        [
+            'brand_name.required' => 'Please enter a valid brand name',
+            'brand_name.min' => 'Brand name must be at least 4 characters long',
+        ]);
+
+        //remove the old images
+        $old_image = $request->old_image;
+       
+
+        //customize the image type
+        $brand_image = $request->brand_image;
+        $generateUniqId = hexdec(uniqid());
+
+        $img_extension = strtolower($brand_image->getClientOriginalExtension());
+        $img_name = $generateUniqId.'.'.$img_extension;
+        $upload_location ="image/brand/";
+        $upload_image = $upload_location.$img_name;
+        $brand_image->move($upload_location,$img_name);
+
+        unlink($old_image);
+        //Brand inserted using  eloquent orm
+        $result=  Brand::find($id)->update([
+            'brand_name' => $request->brand_name,
+            'brand_image' =>  $upload_image,
+            'created_at' => Carbon::now()
+        ]);
+
+        return Redirect()->route('all.brand')->with('success','New Brand updated successfuly');
+    }
 }

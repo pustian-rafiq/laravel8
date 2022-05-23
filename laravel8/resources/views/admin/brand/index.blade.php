@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="container mt-3">
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-7">
               <div class="container mt-3">
                 <div class="card">
                   @if(session('success'))
@@ -63,7 +63,7 @@
 
             {{-- Add Brand Section --}}
 
-            <div class="col-md-6">
+            <div class="col-md-5">
               <div class="container mt-3">
                 <div class="card">
                   <div class="card-header">Add Brand</div>

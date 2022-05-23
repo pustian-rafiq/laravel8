@@ -42,7 +42,7 @@
                             <td>{{ $brand->created_at->diffForHumans() }}</td>  
                             <td>
                               <a href="{{ url('brand/edit/'.$brand->id) }}" class="btn btn-primary">Edit</a>
-                              <a href="{{ url('delete/brand/'.$brand->id) }}" class="btn btn-danger">Delete</a>
+                              <a href="{{ url('brand/delete/'.$brand->id) }}" onclick="return confirm('Are you sure you want to delete?')"class="btn btn-danger">Delete</a>
                             </td>  
                           {{--  this format works for query builder.'--}}
                           {{-- <td>{{ Carbon\Carbon::parse($category->created_at)->diffForHumans() }}</td> --}}

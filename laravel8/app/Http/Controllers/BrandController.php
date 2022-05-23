@@ -65,9 +65,34 @@ class BrandController extends Controller
         //remove the old images
         $old_image = $request->old_image;
        
-
         //customize the image type
         $brand_image = $request->brand_image;
+        if($brand_image){
+            $generateUniqId = hexdec(uniqid());
+
+            $img_extension = strtolower($brand_image->getClientOriginalExtension());
+            $img_name = $generateUniqId.'.'.$img_extension;
+            $upload_location ="image/brand/";
+            $upload_image = $upload_location.$img_name;
+            $brand_image->move($upload_location,$img_name);
+    
+            unlink($old_image);
+            //Brand inserted using  eloquent orm
+            $result=  Brand::find($id)->update([
+                'brand_name' => $request->brand_name,
+                'brand_image' =>  $upload_image,
+                'created_at' => Carbon::now()
+            ]);
+    
+            return Redirect()->route('all.brand')->with('success','New Brand updated successfuly');
+        }else{
+            $result=  Brand::find($id)->update([
+                'brand_name' => $request->brand_name,
+                'created_at' => Carbon::now()
+            ]);
+    
+            return Redirect()->route('all.brand')->with('success','New Brand updated successfuly without image');
+        }
         $generateUniqId = hexdec(uniqid());
 
         $img_extension = strtolower($brand_image->getClientOriginalExtension());

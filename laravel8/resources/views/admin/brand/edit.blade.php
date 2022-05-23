@@ -27,7 +27,7 @@
                   <div class="mb-3 mt-3">
                     <label for="brand_image" class="form-label">Brand Image:</label>
                     <input type="hidden" class="form-control" id="old_image" value="{{ $brand->brand_image }}" name="old_image">
-                    <input type="file" class="form-control" id="brand_image" value="{{ $brand->brand_image }}"  name="brand_image">
+                    <input type="file" class="form-control" id="brand_image" name="brand_image">
 
                     @error('brand_image')
                       <span class="text-danger">{{ $message}}</span>

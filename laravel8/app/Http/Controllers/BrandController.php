@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Brand;
 use Illuminate\Support\Carbon;
+use Image;
+
 class BrandController extends Controller
 {
     //Fetch all brands
@@ -27,13 +29,18 @@ class BrandController extends Controller
 
     //customize the image type
     $brand_image = $request->brand_image;
-    $generateUniqId = hexdec(uniqid());
 
-    $img_extension = strtolower($brand_image->getClientOriginalExtension());
-    $img_name = $generateUniqId.'.'.$img_extension;
-    $upload_location ="image/brand/";
-    $upload_image = $upload_location.$img_name;
-    $brand_image->move($upload_location,$img_name);
+    // $generateUniqId = hexdec(uniqid());
+    // $img_extension = strtolower($brand_image->getClientOriginalExtension());
+    // $img_name = $generateUniqId.'.'.$img_extension;
+    // $upload_location ="image/brand/";
+    // $upload_image = $upload_location.$img_name;
+    // $brand_image->move($upload_location,$img_name);
+
+    // Upload image using image intervention package
+    $generateUniqId = hexdec(uniqid()).'.'.$brand_image->getClientOriginalExtension();
+    Image::make($brand_image)->resize(300,200)->save('image/brand/'.$generateUniqId);
+    $upload_image = 'image/brand/'.$generateUniqId;
 
     //Brand inserted using  eloquent orm
        $result=  Brand::insert([

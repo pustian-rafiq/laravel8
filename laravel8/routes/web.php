@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\MultiimageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,6 +47,8 @@ Route::get('/brand/edit/{id}',[BrandController::class,'editBrand']);
 Route::post('/brand/update/{id}',[BrandController::class,'updateBrand']);
 Route::get('/brand/delete/{id}',[BrandController::class,'deleteBrand']);
 
+// Multiple image routes
+Route::get('/multiple/image',[MultiimageController::class,'multipleImage'])->name('multiple.image');
 
 // Route::middleware([
 //     'auth:sanctum',

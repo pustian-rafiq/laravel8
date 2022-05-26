@@ -7,6 +7,12 @@ use Image;
 use Illuminate\Support\Carbon;
 class MultiimageController extends Controller
 {
+      // Check wheather the user is authenticated or not
+      public function __construct(){
+        $this->middleware('auth');
+    }
+
+    
     public function multipleImage(){
         $multiInages = Multiimage::all();
         return view('admin.multipleimage.index', compact('multiInages'));

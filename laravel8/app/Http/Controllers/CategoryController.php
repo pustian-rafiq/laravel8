@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
+    // Check wheather the user is authenticated or not
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
+    
     public function getAllCategories(){
         //using eloquent orm
         // Fetches all categories from the database in ascending order of id

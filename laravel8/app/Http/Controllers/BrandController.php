@@ -9,6 +9,12 @@ use Image;
 
 class BrandController extends Controller
 {
+      // Check wheather the user is authenticated or not
+      public function __construct(){
+        $this->middleware('auth');
+    }
+
+    
     //Fetch all brands
 
     public function getAllBrand(){

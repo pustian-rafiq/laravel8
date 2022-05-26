@@ -28,7 +28,7 @@ class BrandController extends Controller
         ]);
 
     //customize the image type
-    $brand_image = $request->brand_image;
+    $brand_image = $request->file('brand_image');
 
     // $generateUniqId = hexdec(uniqid());
     // $img_extension = strtolower($brand_image->getClientOriginalExtension());

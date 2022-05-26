@@ -19,7 +19,14 @@
                   @endif
                   <div class="card-header">Multiple Image Upload</div>
                   <div class="card-body">
-                    
+                    <div class="row">
+                      @foreach($multiInages as $image)
+                      <div class="col-md-4 mt-4 card">
+                        <img src="{{ asset( $image->image )}}" alt="">
+                      </div>
+                      @endforeach
+                    </div>
+                 
                   </div> 
                   
                 </div>
@@ -33,18 +40,18 @@
                 <div class="card">
                   <div class="card-header">Add Multiple Image</div>
                   <div class="card-body">
-                    <form action="{{ route('store.brand')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('add.multipleimage')}}" method="post" enctype="multipart/form-data">
                       @csrf
                      
                       <div class="mb-3 mt-3">
-                        <label for="brand_image" class="form-label">Brand Image:</label>
-                        <input type="file" class="form-control" id="brand_image"  name="image">
+                        <label for="brand_image" class="form-label">Multiple Image:</label>
+                        <input type="file" class="form-control" id="brand_image"  name="image[]" multiple="">
 
                         @error('image')
                           <span class="text-danger">{{ $message}}</span>
                         @enderror
                       </div>
-                      <button type="submit" class="btn btn-primary bg-success">Add Image</button>
+                      <button type="submit" class="btn btn-primary bg-success">Add Images</button>
                     </form> 
                   </div> 
                   

@@ -49,6 +49,10 @@ Route::get('/brand/delete/{id}',[BrandController::class,'deleteBrand']);
 
 // Multiple image routes
 Route::get('/multiple/image',[MultiimageController::class,'multipleImage'])->name('multiple.image');
+Route::post('/multipleimage/add',[MultiimageController::class,'addMultipleImage'])->name('add.multipleimage');
+
+
+
 
 // Route::middleware([
 //     'auth:sanctum',

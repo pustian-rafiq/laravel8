@@ -12,8 +12,8 @@ class UserController extends Controller
         $users = User::all();
 
         //Get user using query
-        $users = DB::table('users')->get();
+        //$users = DB::table('users')->get();
 
-        return view('dashboard', compact('users'));
+        return view('admin.index');
     }
 }
